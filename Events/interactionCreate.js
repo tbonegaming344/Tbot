@@ -3173,6 +3173,9 @@ module.exports = {
             .setColor("Random");
           await interaction.followUp({ embeds: [embed], ephemeral: true });
         }
+        else{
+          await interaction.followUp({content: "Please input a valid hero", ephemeral: true})
+        }
       }
       //Elo Score 
       if(interaction.customId === "elo-score-modal") {
