@@ -70,7 +70,6 @@ client.on(Events.MessageCreate, async message => {
 						if(message.author.bot) return;
 			const channel = client.channels.cache.get("1050107020008771604")
         let args = message.content.slice(prefix.length).trim().split(/ +/g);
-        console.log(args.length)
         let commandName = args.join("").toLowerCase()
         const command =
             client.commands.get(commandName) ||

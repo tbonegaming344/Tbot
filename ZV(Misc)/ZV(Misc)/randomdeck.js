@@ -1,26 +1,73 @@
 const { EmbedBuilder } = require("discord.js");
+let db = require("../../index.js");
 module.exports = {
   name: `random`,
   aliases: [`randomdeck`, `ramdomizeddeck`, `deckrandom`, `rand`],
   category: `Miscellaneous`,
   run: async (client, message, args) => {
+    let [result] = await db.query(`select * from bcdecks bc
+inner join bfdecks bf
+on (bc.deckinfo = bf.deckinfo)
+inner join ccdecks cc
+on (bc.deckinfo = cc.deckinfo)
+inner join ctdecks ct 
+on (bc.deckinfo = ct.deckinfo)
+inner join czdecks cz 
+on (bc.deckinfo = cz.deckinfo)
+inner join ebdecks eb 
+on (bc.deckinfo = eb.deckinfo)
+inner join gkdecks gk 
+on (bc.deckinfo = gk.deckinfo)
+inner join gsdecks gs 
+on (bc.deckinfo = gs.deckinfo)
+inner join hgdecks hg 
+on (bc.deckinfo = hg.deckinfo)
+inner join ifdecks fi 
+on (bc.deckinfo = fi.deckinfo)
+inner join imdecks im 
+on (bc.deckinfo = im.deckinfo)
+inner join ncdecks nc 
+on (bc.deckinfo = nc.deckinfo)
+inner join ntdecks nt 
+on (bc.deckinfo = nt.deckinfo)
+inner join pbdecks pb 
+on (bc.deckinfo = pb.deckinfo)
+inner join rodecks ro 
+on (bc.deckinfo = ro.deckinfo)
+inner join rbdecks rb 
+on (bc.deckinfo = rb.deckinfo)
+inner join sbdecks sb 
+on (bc.deckinfo = sb.deckinfo)
+inner join sfdecks sf 
+on (bc.deckinfo = sf.deckinfo)
+inner join smdecks sm 
+on (bc.deckinfo = sm.deckinfo)
+inner join spdecks sp 
+on (bc.deckinfo = sp.deckinfo)
+inner join wkdecks wk 
+on (bc.deckinfo = wk.deckinfo)
+inner join zmdecks zm
+on (bc.deckinfo = zm.deckinfo)
+where bc.deckinfo = 'image link:'`);
     const deck = [
+      //Plants 
+
       //BC Tbot DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1061692821578457168/anti.png",
-      "https://media.discordapp.net/attachments/1127704333266460724/1127704333467799632/Screenshot_20230709-154807.png?width=597&height=625",
+      `${result[0].anti}`,
+      `${result[0].shamcontrol}`,
       //BC WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061692820521504798/midrangepile.jpg?width=454&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061692821901422712/aplha.jpg?width=530&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061692853501304912/starchlordburst.jpg?width=551&height=588",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/tbone/starfruitshell.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262047829208076500/starfruitshell.jpg?ex=66952d22&is=6693dba2&hm=e8a2fcb459d6b2267f8a99a919763ca758a27b2e6c537c263c172eb842dddf8d&=&format=webp&width=559&height=614",
       //CT TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1163152071680331866/ctron.png?ex=653e88c8&is=652c13c8&hm=84a0823ccbd2e047785def66&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061784809216688290/cycletron.jpg?width=538&height=625",
-      "https://media.discordapp.net/attachments/1130612055938965645/1130625851625570324/IMG_6527.png?width=636&height=625",
-      "https://media.discordapp.net/attachments/1135542140265578556/1135542140747927643/Screenshot_20230731_143441.jpg?width=573&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045014120556138506/Screenshot_2021-05-24-20-05-20-570.png?width=592&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061784844155240528/memetron.jpg",
-      "https://media.discordapp.net/attachments/1045888517110251590/1099301743382241320/IMG_20230422_132337.jpg?width=614&height=625",
+      `${result[0].anti}`,
+      `${result[0].countertron}`,
+      `${result[0].cycletron}`,
+      `${result[0].elusives}`,
+      `${result[0].going3nuts}`,
+      `${result[0].joaburst}`,
+      `${result[0].startron}`,
       //CT WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061784807799009340/amphitron.jpg?width=508&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061784808126160906/Anti_graves.jpg?width=575&height=625",
@@ -34,17 +81,16 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061784911633186846/tempoct.jpg?width=512&height=625",
       "https://media.discordapp.net/attachments/1044626284346605588/1061784911914213376/trisluive.jpg?width=561&height=625",
       //CC TBOT DB
-      "https://media.discordapp.net/attachments/1154060027603189821/1154071808643960842/IMG_7140.png?width=512&height=501",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061770126061490177/clownboss.png",
-      "https://media.discordapp.net/attachments/760579518846206033/1088136710187122718/IMG_7338.png?width=655&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061770124585078834/Combomoss.jpg",
-      "https://cdn.discordapp.com/attachments/767567024888741928/1103848627740348459/Screenshot_20230505-020714-730.png",
-      "https://media.discordapp.net/attachments/760579518846206033/1099324386084921505/Screenshot_20230422-142953-100.png?width=616&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061770151889997854/yrm.png",
+      `${result[0].bempo}`,
+      `${result[0].combased}`,
+      `${result[0].comboss}`,
+      `${result[0].gatlingtempo}`,
+      `${result[0].plantmop}`,
+      `${result[0].yrm}`,
       //CC WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061770084235882608/bottedbowerhouse.png",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/aggro/leafyaggro.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/tbone/luckymoss.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262050905134469180/leafyaggro.jpg?ex=66952fff&is=6693de7f&hm=e3b76038069bf51dc94c550308ba9507adb4bc0d6227d20a1be02c22a8a8a70b&=&format=webp&width=527&height=614",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262051673736740945/luckymoss.jpg?ex=669530b6&is=6693df36&hm=a47fd0a60637b80d374cb5c85788e48afb7812e0a9ba2aae22c9023c5ddff091&=&format=webp&width=553&height=614",
       "https://media.discordapp.net/attachments/1044626284346605588/1061770084932145192/cosmicopea.jpg?width=538&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061770085221543968/cptquickonions.jpg?width=534&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061770085494177792/dinocopy.jpg?width=509&height=588",
@@ -58,31 +104,29 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061770150933712926/predictable.jpg?width=522&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061770151223103608/scuffedcomboss.jpg?width=481&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061770151504134145/weirdflexbutotk.jpg?width=543&height=588",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/aggro/kaleaggro.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/midrange/pinechrome.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262051895942451290/kaleaggro.jpg?ex=669530eb&is=6693df6b&hm=7bd05bb834436606723442c6e55db326ceb9f3aabdf5fb3ef7296b21f5ea2bfa&=&format=webp&width=585&height=614",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262051895942451290/kaleaggro.jpg?ex=669530eb&is=6693df6b&hm=7bd05bb834436606723442c6e55db326ceb9f3aabdf5fb3ef7296b21f5ea2bfa&=&format=webp&width=585&height=614",
       //CZ TBOT DB
       //Aggro Ramp Pea
-      "https://media.discordapp.net/attachments/1060317261690322994/1195138063685406761/IMG_4412.png?ex=65ce958e&is=65bc208e&hm=7999a21ae988d689144ea39bec2bbb4f2fe7a575450c4e54da6d22b04a065c55&=&format=webp&quality=lossless&width=528&height=570",
+      `${result[0].aggroramppeas}`,
       //Aggro CZ
-      "https://media.discordapp.net/attachments/1045888517110251590/1092543340811137074/IMG_5085.png?width=847&height=604",
+      `${result[0].aggrozilla}`,
       //AmongUsZilla
-      "https://media.discordapp.net/attachments/1044626284346605588/1061696586821947492/amongus.jpg?width=553&height=588",
+      `${result[0].amonguszilla}`,
       //ApOTK
-      "https://media.discordapp.net/attachments/1044626284346605588/1183515298956050624/IMG_7739.jpg?ex=65889d83&is=65762883&hm=d856de0783fa936b0e9ca1fc&=&format=webp&width=579&height=568",
+      `${result[0].apotk}`,
       //HMZ
-      "https://media.discordapp.net/attachments/1044626284346605588/1107386090639331470/Heal_Midzilla.jpg?width=607&height=567",
+      `${result[0].healmidzilla}`,
       //HRR
-      "https://media.discordapp.net/attachments/1044626284346605588/1152361682019037314/IMG_4769.png?width=582&height=621",
+      `${result[0].hrr}`,
       //MidRed
-      "https://media.discordapp.net/attachments/1044626284346605588/1163154220762013867/Mid_Red.jpg?ex=653e8ac8&is=652c15c8&hm=f822be2d84810594fb1e5383&=&width=673&height=621",
-      //OTK Pepper
-      "https://media.discordapp.net/attachments/1044626284346605588/1119829936002318337/IMG_3002.jpg?width=578&height=625",
+      `${result[0].midred}`,
       //RingZilla
-      "https://media.discordapp.net/attachments/1044626284346605588/1161283906419572748/IMG_5233.png?ex=6537bcea&is=652547ea&hm=e86563a4f92ecf7743ab2355&=&width=631&height=580",
+      `${result[0].ringzilla}`,
       //Stallzilla
-      "https://media.discordapp.net/attachments/940369914957549578/1059125203050975303/Screenshot_2023-01-01-23-05-12-372-edit_com.ea.gp.pvzheroes.jpg?width=602&height=625",
+      `${result[0].stallzilla}`,
       //Mopribus
-      "https://media.discordapp.net/attachments/780141103558295592/1198735646869688360/Screenshot_20240121-215750-442.png?ex=65c93711&is=65b6c211&hm=dabafd9dcc5d2e7fa3a29c1dbd325d7d2302d0f9dffefdfb9ed6682796c87820&=&format=webp&quality=lossless&width=559&height=570",
+      `${result[0].mopribus}`,
       //CZ WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061696586482196620/ramppeas.jpg?width=535&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061696587165859961/CZ_healaggro.jpg?width=514&height=588",
@@ -92,29 +136,26 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061696628613992458/ramptotrash.jpg?width=460&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061696629180215329/magotk.png?width=621&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061696630027456633/rampredrings.jpg?width=526&height=588",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fusionbreak/midpresso.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/flowerman/flowerheal.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/badorni/ramprings.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/meme/ramspresso.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262052738947219538/midpresso.jpg?ex=669531b4&is=6693e034&hm=03d6d8d980a874af69d403bf62f4a93c54dd9117a09215e3adacd0756d58a20c&=&format=webp&width=639&height=614",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262053105470803968/flowerheal.jpg?ex=6695320c&is=6693e08c&hm=6d5f288681820ceeb02dc709b7bd1fa4b99c4d700179d9cca3de7c268b35ae15&=&format=webp&width=535&height=614",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262053342050390116/ramprings.jpg?ex=66953244&is=6693e0c4&hm=e652b56622b977f327e736de7abe5fba48508b3623a95bff062b0a6a32bf1b09&=&format=webp&width=627&height=614",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262053642454827118/ramspresso.webp?ex=6695328c&is=6693e10c&hm=17902ccc3150b9d3d2d7c39e89ea4d98206da609a9bf1cc663deb2dc0176d46d&=&format=webp",
       //GK TBOT DB
-      "https://media.discordapp.net/attachments/1129984727525376071/1129984727718309958/IMG_5274.jpg?width=650&height=625",
-      "https://media.discordapp.net/attachments/1045888517110251590/1092439314362802207/IMG_0886.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1044626375212015686/IMG_9330.jpg?width=526&height=604",
-      //Devin Knuckles
-      "https://media.discordapp.net/attachments/840248485467127855/1193547168154398720/IMG_8153.png?ex=65ad1c6b&is=659aa76b&hm=eee41ecfe55f76eb8456d88eefa3f59ffa2c9f6579a19cae8db6dea776ce9a96&=&format=webp&quality=lossless&width=658&height=614",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045190223396622488/IMG_9374.png?width=551&height=604",
-      //Healthy Knuckles
-      "https://media.discordapp.net/attachments/1200638850020671579/1203477334095691836/Screenshot_20240203_113541_com.gspace.android.jpg?ex=65e3b19b&is=65d13c9b&hm=744ab83ddf63a314e60ddf81583846753110d53787d3c7ed4b63514a20b2b1c9&=&format=webp&width=421&height=500",
-      "https://cdn.discordapp.com/attachments/1076677104734843001/1108744537788125294/IMG_4709.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1072996484590612501/8137d3a0e0c2f82c7b54bcae01b56411cd70191c563cfb84600f44d6996f8c07.png?width=590&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1044626376524828742/Screenshot_20210516-134753.png?width=620&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1163155224458969088/savagetempo.jpeg?ex=653e8bb7&is=652c16b7&hm=25cb56080c4780eb031a2383&=&width=588&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1052255700245561394/sweetvm.png?width=446&height=554",
-      //CCP Aggro
-      "https://media.discordapp.net/attachments/1198719600666357781/1198893713338941480/IMG_8013.jpg?ex=65c08fc7&is=65ae1ac7&hm=741166dd026fb646a155390ff920f6e5446613f38da271d92cf9af776ef2c621&=&format=webp&width=576&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1058083259050901564/IMG_0353.png?width=571&height=625",
-      //Zoolander
-      "https://media.discordapp.net/attachments/1044626284346605588/1238548792131715192/IMG_6277.png?ex=663faff3&is=663e5e73&hm=103ac1696a66748a510619817cecc5b8e2ce8387646d454a9d9e22dc7d6b36f1&=&format=webp&quality=lossless&width=537&height=570",
+      `${result[0].it3}`,
+      `${result[0].pea3}`,
+
+      `${result[0].baggro}`,
+      `${result[0].ccpaggro}`,
+      `${result[0].coffeerings}`,
+      `${result[0].devinknuckles}`,
+      `${result[0].healthyknuckles}`,
+      `${result[0].knucklesmop}`,
+      `${result[0].r3d}`,
+      `${result[0].savagecucumber}`,
+      `${result[0].savagetempo}`,
+      `${result[0].sweetvm}`,
+      `${result[0].tryknuckles}`,
+      `${result[0].zoolander}`,
       //GK WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061674110339534858/bannaconjure.jpg?width=548&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061674110628925521/bottedknuckles.png",
@@ -130,17 +171,18 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061674195085430894/knuckles_sprout.jpg?width=550&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061674195349680258/laddergk.jpg?width=466&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061674241013063700/starchwreck.jpg?width=549&height=588",
-      //GS Tbot DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1061652670928125962/100winrate.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1137382388834500618/Abeans.jpg?width=669&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1137382646557720707/jbeans.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1137382860374933555/Midshadow.jpg?width=611&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1137383032974757948/millie.jpg?width=612&height=621",
-      "https://media.discordapp.net/attachments/1108246575521734727/1108246575832125490/IgmaPeaTempo.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061656552962007060/savagemayflower.jpg?width=545&height=588",
-      "https://media.discordapp.net/attachments/1145335226776694876/1145335227108040715/Screenshot_20230826-203159.png?width=564&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061656553620525166/techbeans.jpg?width=542&height=588",
-      "https://media.discordapp.net/attachments/1044626284346605588/1183515300239519854/IMG_5757.jpg?ex=65889d84&is=65762884&hm=1fc746acf012ff1d2e32286c&=&format=webp&width=586&height=570",
+      //GS TBOT DB
+      `${result[0].wr100}`,
+      `${result[0].abeans}`,
+      `${result[0].bbeans}`,
+      `${result[0].jbeans}`,
+      `${result[0].midshadow}`,
+      `${result[0].millie}`,
+      `${result[0].mindblower}`,
+      `${result[0].peatempo}`,
+      `${result[0].savagemayflower}`,
+      `${result[0].sovietonion}`,
+      `${result[0].yuletide}`,
       //GS WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061639582816424038/IMG_0547.png?width=530&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061652668952629288/aggrow.jpg?width=514&height=588",
@@ -167,17 +209,13 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061656554090274916/techedabeans.jpg?width=550&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061656554413244516/vegs.png",
       //NC TBOT DB
-      "https://media.discordapp.net/attachments/1118233729987526686/1118233730180456628/IMG_2927.png?width=566&height=625",
-      //Buff Swarm
-      "https://media.discordapp.net/attachments/923709467751772210/1192958306759757906/IMG_7855.png?ex=65aaf800&is=65988300&hm=9f611ba0cc1e60b587d9f5b32ea4c5638b4ed814783ccf4bdbf27dde17c8e29e&=&format=webp&quality=lossless&width=624&height=614",
-      "https://media.discordapp.net/attachments/1044626284346605588/1113117168570224670/IMG_7608.png?width=605&height=567",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061789053000896602/cyggro.jpg?width=544&height=588",
-      "https://media.discordapp.net/attachments/760579518846206033/1066832294482030682/Screenshot_2022-06-13-16-27-21-4552.jpg?width=629&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1084300127809830973/IMG_1670.png?width=587&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061789053244153968/hyperswarm.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061789053600661625/joashrooms.jpeg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061789053860728873/Midcap.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1065298249143037962/IMG_0925.png?width=554&height=587",
+      `${result[0].buffswarm}`,
+      `${result[0].cyburn}`,
+      `${result[0].gangstaparadise}`,
+      `${result[0].hyperswarm}`,
+      `${result[0].joashrooms}`,
+      `${result[0].midcap}`,
+      `${result[0].speeddemon}`,
       //NC WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061789054422753301/middlest.jpg?width=600&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061789054661820487/rescuekale.jpg?width=570&height=588",
@@ -185,16 +223,15 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061789089780732094/dragon.jpg?width=491&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061789090254700616/frozentots.jpg?width=554&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061789090548297768/snakeparadise.jpg?width=537&height=588",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/midrange/midshrooms.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262054285856997376/midshrooms.jpg?ex=66953325&is=6693e1a5&hm=370aa748325491d05d51a5016f2d25dcf745a538bdc440f934a950ff904baa40&=&format=webp&width=313&height=350",
       // RO TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1061703863528333383/antiaggro.jpg?width=558&height=588",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061703863863885905/combose.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061703864606261359/frymid.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061703865063448677/midrose.jpeg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061704015106289664/heal_midrose.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061703866032332941/oldmidrose.jpg?width=558&height=588",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061704035893260358/RMR.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1064547528688816188/IMG_0888.png?width=575&height=625",
+      `${result[0].combose}`,
+      `${result[0].freezeheal}`,
+      `${result[0].frymidrose}`,
+      `${result[0].hmr}`,
+      `${result[0].midrose}`,
+      `${result[0].rampmidrose}`,
+      `${result[0].violetmid}`,
       //RO WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061703864245559446/freal.png?width=578&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061703864824381540/midrampile.jpg?width=532&height=588",
@@ -206,26 +243,20 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061704016985325609/ramprose.jpg?width=560&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061704017266348092/ramprose.png",
       "https://media.discordapp.net/attachments/1044626284346605588/1061704035578679317/RO_healaggro.jpg?width=527&height=587",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/midrange/cycleheal.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fusionbreak/newtempo.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262054631467384914/cycleheal.jpg?ex=66953377&is=6693e1f7&hm=25bea0013c53367e16e482d54c1a85d1794358e6290bd5d10b5526d160fc5718&=&format=webp&width=565&height=614",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262054775403319306/newtempo.jpg?ex=6695339a&is=6693e21a&hm=90284cd8a06efd8f956bc3b4dbdcf76ee781dd2b8c95aa376280b09512ee48d6&=&format=webp&width=536&height=614",
       //SF TBOT DB
-      "https://media.discordapp.net/attachments/1030063061953945690/1075169917285965855/Screenshot_20230214-154117-398.png?width=630&height=656",
-      //Ejection
-      "https://media.discordapp.net/attachments/1044626284346605588/1061667675392184350/ejection.jpeg",
-      "https://media.discordapp.net/attachments/1045888517110251590/1099802207869739118/Screenshot_20230423-220021_PvZ_Heroes.jpg?width=691&height=555",
-      //Healburn
-      "https://media.discordapp.net/attachments/1044626284346605588/1061667675824193536/healburn.PNG",
-      //Funny Flare
-      "https://media.discordapp.net/attachments/1171919363406823567/1171919363767541850/IMG_7513.png?ex=6567a875&is=65553375&hm=b00737ca324529958c91db3d&=&width=533&height=621",
-      //HealMidFlare
-      "https://media.discordapp.net/attachments/1044626284346605588/1231976840822919239/healmidflare.webp?ex=6627c757&is=662675d7&hm=9a8a65c42d423984a1e714df0a72cdc6eb7a685d6a1589dd1de56bd979c0b80a&=&format=webp",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061667839351734324/physcoclones.jpg?width=516&height=588",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061667841436291164/rampclones.png?width=601&height=588",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061667906066317352/tryhard101.png",
-      "https://media.discordapp.net/attachments/1076677104734843001/1140049455408758794/IMG_5271.png?width=594&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1132767328279478442/IMG_6148.png?width=640&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169709401486135447/IMG_5372.png?ex=655663c5&is=6543eec5&hm=323781656a7fbee46bcab19f&=&width=667&height=625",
-      "https://media.discordapp.net/attachments/1152036915491639377/1152036915932045362/Screenshot_20230915-022101-231.png?width=612&height=621",
+      `${result[0].oneone}`,
+      `${result[0].aggrosf}`,
+      `${result[0].ejection}`,
+      `${result[0].funnyflare}`,
+      `${result[0].healaggrof}`,
+      `${result[0].healmidflare}`,
+      `${result[0].physcopineclones}`,
+      `${result[0].physcosolstice}`,
+      `${result[0].rampclones}`,
+      `${result[0].ramp2seedling}`,
+      `${result[0].solstice}`,
       //SF WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061667674851131484/astroburst.jpg?width=464&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061667675119550545/astrocado.jpg?width=543&height=588",
@@ -255,14 +286,14 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061667906364125224/Trollerflare.jpg?width=515&height=588",
       //SP TBOT DB
       //Bartin
-      "https://media.discordapp.net/attachments/1044626284346605588/1229950824202113024/Bartin.webp?ex=66318bf7&is=661f16f7&hm=5187a2437b1b35b589c66b61b6c57edabb4d1c4d382f9bc08e44782bd55b46e2&=&format=webp&width=697&height=655",
-      "https://media.discordapp.net/attachments/780141103558295592/1045084475308134460/cachedImage.png?width=645&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160949488559603743/IMG_5218.png?ex=65368577&is=65241077&hm=146bd5a6e28ae63f60298893&=&width=606&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061764111836397639/magmartin.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045011616409858048/IMG_20220514_191624.jpg?width=594&height=604",
-      "https://media.discordapp.net/attachments/780141103558295592/1045084546519011368/cachedImage.png?width=644&height=604",
-      "https://media.discordapp.net/attachments/1027007487599202407/1125646763701850252/IMG_6991.png?width=669&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1065773736537632878/Screenshot_20210523-160341.png?width=643&height=624",
+      `${result[0].bartin}`,
+      `${result[0].bartinroots}`,
+      `${result[0].cyclesp}`,
+      `${result[0].magmartin}`,
+      `${result[0].pranksterburn}`,
+      `${result[0].reliablemolekale}`,
+      `${result[0].tempodinoroots}`,
+      `${result[0].tokenaggro}`,
       //SP WEB DB
 
       "https://media.discordapp.net/attachments/1044626284346605588/1061764111454699681/kenmartin2nd.png?width=639&height=588",
@@ -276,16 +307,19 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061764170921541753/t3mpo.jpg?width=535&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061764171202568233/spudumb.jpg?width=541&height=588",
       //WK TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1169715953848811630/3mid.png?ex=655669df&is=6543f4df&hm=de52b253ff62cb93cf19f554&=",
-      "https://media.discordapp.net/attachments/950984460382388244/952760179085152296/Aggro_WK.png?width=643&height=604",
-      "https://media.discordapp.net/attachments/1060317261690322994/1088913176776675490/CancerKnight.png?width=647&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061686841855717456/cycleknight.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061686842191249489/funnyknight.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1134463532365266945/this_deck_came_from_figuring_out_that_garlic_could_be_used_as_both_a_cob_and_3nut_activator_so_a_faster_wall_knight_deck_could_have_conssitent_cob_evo_and_3nut_abuse.jpg?width=622&height=580",
-      "https://media.discordapp.net/attachments/1042391001039372289/1044023170270756984/IMG_5283.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1093229886157623406/image0.jpg?width=549&height=555",
-      "https://media.discordapp.net/attachments/1060317261690322994/1068146423222255656/IMG_3714.jpg?width=561&height=587",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045190222222213210/IMG_9375.png?width=548&height=604",
+      `${result[0].mid3}`,
+      `${result[0].cancerknight}`,
+      `${result[0].chemotherapy}`,
+      `${result[0].cycleknight}`,
+      `${result[0].funnyknight}`,
+      `${result[0].healmidwk}`,
+      `${result[0].highlander}`,
+      `${result[0].midmirror}`,
+      `${result[0].nivola}`,
+      `${result[0].obnoxious}`,
+      `${result[0].packagewk}`,
+      `${result[0].rampburst}`,
+      `${result[0].shitknight}`,
       //WK WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061686842526802071/Healaggro.jpg?width=545&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061686842786852924/healmid_wk.jpg",
@@ -297,25 +331,23 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061686926639378565/trollknight.jpg?width=575&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061686926983303188/wkcontrol.png",
       "https://media.discordapp.net/attachments/1044626284346605588/1061686928107388958/ramptroll.jpg?width=546&height=588",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/fry/aggro/package.jpg",
-      "https://pvzheroesdecklists.tbonegaming344.repl.co/berserk/funnysunstrike.jpg",
+      "https://media.discordapp.net/attachments/1152624944262414436/1262058591456591986/funnysunstrike.jpg?ex=66953728&is=6693e5a8&hm=9b9405d42110f26d07ddca91d277b9a9e66de4d3592db8b6334a0cae47ebecc3&=&format=webp&width=492&height=614",
+      
+      //Zombies 
+
       //BF TBOT DB
-      //Garolith Tech
-      "https://media.discordapp.net/attachments/1044626284346605588/1047968774592147506/image.png",
-      //Himps
-      "https://media.discordapp.net/attachments/1030888661581041775/1061706069832904764/IMG_0523.png?width=540&height=588",
-      //Morality
-      "https://media.discordapp.net/attachments/1208844365737492532/1208844659867131974/Screenshot_20240216_184145_PvZ_Heroes.jpg?ex=65e4c352&is=65d24e52&hm=98deffe39a87ebede9a8f1e82b974cd2a5dd256a4cfd8a4ba1120ed41ac6a5ae&=&format=webp&width=602&height=614",
-      //Lockout
-      "https://media.discordapp.net/attachments/1044626284346605588/1229069832516014091/pirateout.webp?ex=662e577b&is=661be27b&hm=be87dc763d8e6feb16fc12a75f11fa1989a6dfa695a2020a7870562e973067e0&=&format=webp",
-      //OTK Swabbie
-      "https://media.discordapp.net/attachments/760579518846206033/1053844953802997760/IMG_9697.png?width=505&height=555",
-      //Racism
-      "https://media.discordapp.net/attachments/1044626284346605588/1127703695975534622/IMG_5074.png?width=648&height=625",
-      //Raiser package
-      "https://media.discordapp.net/attachments/1044626284346605588/1044626375975378944/IMG_9327.png?width=526&height=604",
-      //MidPets
-      "https://media.discordapp.net/attachments/1153820028873998367/1153820029255700490/Screenshot_20230919-181706.png?width=389&height=501",
+      `${result[0].aggropirates}`,
+      `${result[0].garolithtech}`,
+      `${result[0].himps}`,
+      `${result[0].lockin}`,
+      `${result[0].lockout}`,
+      `${result[0].midpets}`,
+      `${result[0].morality}`,
+      `${result[0].otkswabbie}`,
+      `${result[0].petmop}`,
+      `${result[0].racism}`,
+      `${result[0].raiserpackage}`,
+      `${result[0].slavery}`,
       //BF WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061799296267210842/huntconjure.jpg?width=556&height=588",
       "https://media.discordapp.net/attachments/1157822351686258708/1157822351891775538/IMG_5481.png?ex=651e9ed7&is=651d4d57&hm=42f9fd46ba37f1dc929ffbc5&=&width=591&height=580",
@@ -330,20 +362,17 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061799386801262712/whale.jpg?width=493&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1061799388915179641/swabbiethegoat.jpg?width=532&height=588",
       //EB TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1245048081641115648/IMG_6379.png?ex=665754e2&is=66560362&hm=0f5f5bb66377b527fe9a2053bc5923610c7bd2025216b391ef6d6b289dddca67&=&format=webp&quality=lossless&width=510&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1128680390937292840/Z_EB_Control_Bunnary_22.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045190383866495086/IMG_4213.jpg?width=622&height=604",
-      //igma burn
-      "https://media.discordapp.net/attachments/1026325623477641236/1133702398322421802/IMG_6613.png?width=589&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045340637412728862/IMG_9381.png?width=579&height=604",
-      "https://media.discordapp.net/attachments/1092759178352807976/1093246758567542834/IMG_8555.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169715211767386112/NPA.png?ex=6556692e&is=6543f42e&hm=aeb8631e5d6f501c36987bc8&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169717041473785947/PlayerRemoval.png?ex=65566ae2&is=6543f5e2&hm=afc86138b2c67ae47430161e&=",
-      //Seacret
-      "https://media.discordapp.net/attachments/1044626284346605588/1229086722693005463/seacret.jpg?ex=662e6736&is=661bf236&hm=963e59e4f9503051f90fed0a4a8df55ce1c82e04205abf701300e53d12b1829c&=&format=webp&width=619&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1056775376023605278/TEch22.png",
-      //Ignea
-      "https://images-ext-1.discordapp.net/external/xmgA_AgeOX6JMo-mu_iB1m6yM1yKrLmcp6YZb8ZPaZ4/https/i.imgur.com/fzpcaX6h.jpg?format=webp&width=621&height=655",
+      `${result[0].binary22}`,
+      `${result[0].bunary22}`,
+      `${result[0].burnpackage}`,
+      `${result[0].igmaburn}`,
+      `${result[0].ignea}`,
+      `${result[0].missioncontrol}`,
+      `${result[0].mrfeast}`,
+      `${result[0].noplayingallowed}`,
+      `${result[0].playerremoval}`,
+      `${result[0].seacret}`,
+      `${result[0].whalekyrie}`,
       //EB WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1062141837013417994/IMG_9691.jpg?width=537&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1062141837286060083/IMG_0577.jpg?width=577&height=588",
@@ -360,30 +389,27 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1062141880088924211/b339352587be6bb5a5bad6c727cd8b0340d207ba12146e26c91b286372faaac2.png",
       "https://media.discordapp.net/attachments/1044626284346605588/1062141896236990514/Screenshot_20220728-030511-604.png?width=575&height=588",
       //SB TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1061846548121653368/Screenshot_20201115-164655-1.png?width=605&height=586",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061846549430280232/unknown-4.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1061846549950369893/6208006128faa0c77fe3c5f3cbffbf6cc8e6b401e12b156742da708a21df2dc9.png",
+      `${result[0].lgconjuresb}`,
+      `${result[0].mill}`,
+      `${result[0].telimpssb}`,
       //SB WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061846547098255410/IMG_0739.jpg?width=570&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846547312156692/IMG_0738.jpg?width=585&height=586",
-      "https://media.discordapp.net/attachments/1044626284346605588/1091082050993406082/IMG_1919.png?width=529&height=555",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846547869999185/IMG_0591.jpg?width=485&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846548683702292/IMG_0736.jpg?width=555&height=587",
       //HG TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1044975287336710236/IMG_9337.png?width=561&height=604",
-      "https://media.discordapp.net/attachments/1045888517110251590/1096755740422709249/Screenshot_20230415-131028-240.png?width=577&height=586",
-      "https://media.discordapp.net/attachments/1045888517110251590/1097542157327413248/image.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045011616032362526/unknown-11.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1133210630782976080/ezgif.com-gif-maker_38.gif",
-      //HG Kitchen Sink Has Everything
-      "https://media.discordapp.net/attachments/1044626284346605588/1239745836955734016/IMG_6300.png?ex=66440ac8&is=6642b948&hm=2fa1e4d9b5e45d9a7276157d4bd792d815abd079d21769219282be0f0f66219f&=&format=webp&quality=lossless&width=565&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045011614648258621/unknown-5.png",
-      //Mimps
-      "https://media.discordapp.net/attachments/1189353266614632448/1189353267059232848/IMG_7805.png?ex=659dda8b&is=658b658b&hm=1e159307162d9d82905edb86&=&format=webp&quality=lossless&width=625&height=614",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045011615017340958/Sueshe_Aggro.png?width=538&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1044626374939381860/IMG_9264.png?width=570&height=604",
-      "https://media.discordapp.net/attachments/1130612055938965645/1130615542877802629/IMG_6329.png?width=641&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161358283853004891/YKM.jpg?ex=6538022f&is=65258d2f&hm=4caf37568545f3aadb1753c3&=",
+      `${result[0].blobfishwrappers}`,
+      `${result[0].conjureleap}`,
+      `${result[0].frozentelimps}`,
+      `${result[0].gravestache}`,
+      `${result[0].gravester}`,
+      `${result[0].gus}`,
+      `${result[0].kitchenhg}`,
+      `${result[0].lgconjure}`,
+      `${result[0].sushiaggro}`,
+      `${result[0].sweap}`,
+      `${result[0].telimps}`,
+      `${result[0].ykm}`,
       //HG WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1062170851161669652/IMG_0611.jpg?width=567&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1062170851614675045/IMG_0609.jpg?width=531&height=588",
@@ -405,20 +431,16 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1062170893356388402/IMG_0592.jpg?width=518&height=588",
       "https://media.discordapp.net/attachments/1044626284346605588/1062170936331223040/IMG_0590.jpg?width=545&height=588",
       //IF TBOT DB
-      //lg AGGRO
-      "https://media.discordapp.net/attachments/1044626284346605588/1045011615407427657/unknown-20-1.png",
-      //Barrel Pirates
-      "https://media.discordapp.net/attachments/1044626284346605588/1239491579987623976/2.1.png?ex=66431dfd&is=6641cc7d&hm=b4e5c55ba41e920214bdd9c3c2175592e7e5440c56231ac4e7e3af2e6fbe8bd2&=&format=webp&quality=lossless&width=613&height=570",
-      "https://media.discordapp.net/attachments/1030063061953945690/1071950672011993129/Screenshot_20230204-231352-548.png?width=595&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160944168089165864/IMG_5213.jpg?ex=65368082&is=65240b82&hm=ac7539e8428eafe5ef8f97d7&=&width=619&height=580",
-      "https://media.discordapp.net/attachments/1041382979282423828/1041383270228693132/unknown.png?width=593&height=555",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160985263271579848/IMG_5224.png?ex=6536a6c8&is=652431c8&hm=19c9a8702bcff0476f45b531&=&width=616&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1120057054007148614/IMG_3028.png?width=571&height=625",
-      //Spacestars
-      "https://media.discordapp.net/attachments/1044626284346605588/1239491580352532652/IMG_6283.png?ex=66431dfd&is=6641cc7d&hm=a1e13bacfd93a840643e729d35ec07b80c1df2bfa342619bd34f752be46f008b&=&format=webp&quality=lossless&width=510&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161330017784049784/IMG_5236.png?ex=6537e7dc&is=652572dc&hm=68bf783e31207cd629026353&=&width=543&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1056775375755161630/IMG_0279.png?width=589&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161360617198846011/wrathmartin.png?ex=6538045c&is=65258f5c&hm=c4564064c91ea2455bfacbf9&=",
+      `${result[0].aggroconjure}`,
+      `${result[0].barrelpirates}`,
+      `${result[0].conjurepackage}`,
+      `${result[0].conjurates}`,
+      `${result[0].ifplankcontrol}`,
+      `${result[0].midpirates}`,
+      `${result[0].spacestars}`,
+      `${result[0].splimps}`,
+      `${result[0].unoif}`,
+      `${result[0].wrathmartin}`,
       //IF WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1062141452253138944/IMG_0633.jpg?width=593&height=625",
       "https://media.discordapp.net/attachments/1044626284346605588/1062141452496404540/IMG_0632.jpg?width=586&height=625",
@@ -431,21 +453,18 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1062141454488703107/IMG_0624.jpg",
       "https://media.discordapp.net/attachments/1044626284346605588/1062141488596779129/IMG_0622.jpg?width=576&height=625",
       //IM TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1052255700585295963/image0-32.jpg?width=600&height=555",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169718634902474842/Happyticia.jpeg?ex=65566c5e&is=6543f75e&hm=42518395334172a23eac0f8a&=",
-      //Igmaticia
-      "https://media.discordapp.net/attachments/1044626284346605588/1160987049499828264/IMG_5225.png?ex=6536a872&is=65243372&hm=00593ec7d3f2293b642a996f&=&width=628&height=580",
-      //OTK Trickster
-      "https://media.discordapp.net/attachments/1044626284346605588/1231983138616639568/otktrickster.png?ex=6627cd35&is=66267bb5&hm=57ddde1f586dda2b99412197a30f18e111458f39b977768a37e004572b8c717d&=&format=webp&quality=lossless",
-      //Rampticia
-      "https://media.discordapp.net/attachments/1060317261690322994/1065450876493373530/IMG_3706.png?width=586&height=587",
-      //Scimmort
-      "https://media.discordapp.net/attachments/1044626284346605588/1231721114598772806/science.webp?ex=6637fcad&is=662587ad&hm=c610e209d1da9f47c4c9066d49a6e57172311646b97d0075acb9c3af0044902b&=&format=webp&width=615&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1183515299325161492/IMG_5840.jpg?ex=65889d84&is=65762884&hm=211f0117ed15848e56a84e34&=&format=webp&width=585&height=570",
-      "https://media.discordapp.net/attachments/908814148438229033/1109857576860004503/IMG_6516.png?width=649&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045190379705745468/unknown.png?width=648&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161347205714673674/IMG_5237.jpg?ex=6537f7de&is=652582de&hm=09420dc379c7742012d715b9&=&width=657&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1111417389184188537/ycm.png",
+      `${result[0].burnticia}`,
+      `${result[0].comboticia}`,
+      `${result[0].happyticia}`,
+      `${result[0].igmaticia}`,
+      `${result[0].otktrickster}`,
+      `${result[0].rampticia}`,
+      `${result[0].scimmort}`,
+      `${result[0].stacheticia}`,
+      `${result[0].telepets}`,
+      `${result[0].telepets}`,
+      `${result[0].toaster}`,
+      `${result[0].ycm}`,
       //IM WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1062140862525612032/IMG_0656.png?width=828&height=587",
       "https://media.discordapp.net/attachments/1044626284346605588/1062140862861168732/IMG_0655.jpg?width=555&height=587",
@@ -462,23 +481,21 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1062141141685911592/IMG_0643.jpg?width=552&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1062141141958537236/IMG_0642.jpg?width=396&height=587",
       //NT TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1160926756153335828/IMG_5207.jpg?ex=6536704b&is=6523fb4b&hm=c442c397027575150d07ae10&=&width=526&height=580",
-      "https://media.discordapp.net/attachments/1045888517110251590/1096533284323856436/Screenshot_20230414-220028-386.png?width=580&height=586",
-      "https://media.discordapp.net/attachments/1105613025731432539/1105735101129695282/Screenshot_20230510-075608-809.png?width=595&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1050166192150691910/IMG_9555.jpg?width=503&height=555",
-      "https://media.discordapp.net/attachments/1130342284890746911/1130342285125632051/Screenshot_20230716_211921.jpg?width=566&height=621",
-      "https://media.discordapp.net/attachments/1042391001039372289/1043945630705397871/glag.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1047968773799424011/IMG_9505.png?width=512&height=555",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161354384786071572/IMG_5238.png?ex=6537fe8e&is=6525898e&hm=0944fa9480145a3c3bd5e133&=&width=654&height=621",
-      "https://media.discordapp.net/attachments/1134399933370351657/1134399933580062824/IMG_5225.png?width=559&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1114959263329169509/schoolyard.jpg?width=646&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1050166192368791582/IMG_9556.jpg?width=510&height=554",
-      //Floss
-      "https://media.discordapp.net/attachments/1232152648753348698/1232152896779456563/WYlGSkU.png?ex=663f7d8e&is=663e2c0e&hm=9aa33e30c403692ed07a73d51615bac7f211fdf5a9d5d775cb1e8c87907b920d&=&format=webp&quality=lossless&width=607&height=570",
-      "https://images-ext-2.discordapp.net/external/rgEqFopGEXrDYCOwgvZEEp5DA_GEkvEhLnRN4kew_vA/https/cdn-longterm.mee6.xyz/plugins/commands/images/744209695123832872/fbce45eb42e826fb9ec4e2152b73c3e17234fbe9a284766431d24e78dc74c137.png",
-      "https://media.discordapp.net/attachments/1067552920947662909/1102626689835610172/IMG_2366.png?width=548&height=604",
-      //IceBox
-      "https://media.discordapp.net/attachments/1209705155214319646/1209708655121793034/IMG_8191.jpg?ex=66160c7a&is=6603977a&hm=a8f9de7c1435d2433500dcb941d6259931d129799678787d95fed8451278b80a&=&format=webp&width=504&height=500",
+      `${result[0].agraves}`,
+      `${result[0].antiagor}`,
+      `${result[0].antiagoragor}`,
+      `${result[0].combotuna}`,
+      `${result[0].flagtor}`,
+      `${result[0].floss}`,
+      `${result[0].glag}`,
+      `${result[0].icebox}`,
+      `${result[0].midtuna}`,
+      `${result[0].plankcontrol}`,
+      `${result[0].preciseplankcontrol}`,
+      `${result[0].schoolyard}`,
+      `${result[0].tricktuna}`,
+      `${result[0].trimps}`,
+      `${result[0].wimps}`,
       //NT WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1062141638153076818/IMG_0680.jpg?width=595&height=625",
       "https://media.discordapp.net/attachments/1044626284346605588/1062141638731903067/IMG_0678.jpg?width=591&height=625",
@@ -494,24 +511,24 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1062141669652320266/IMG_0668.jpg?width=584&height=625",
 
       //PB TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1045190220947128370/IMG_9379.png?width=573&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1124404309409415209/IMG_3197.jpg?width=583&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1140820258928726046/IMG_4139.png?width=561&height=621",
-      "https://media.discordapp.net/attachments/1044626284346605588/1118536065486159882/IMG_2945.png?width=566&height=625",
-      "https://media.discordapp.net/attachments/1060317261690322994/1065453499132952666/IMG_3707.png?width=570&height=587",
-      "https://media.discordapp.net/attachments/950984460382388244/951872349383303228/Package.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169721134959300618/PureBurn.png?ex=65566eb2&is=6543f9b2&hm=a69dd7b94fd9ff1bc8e40553&=g",
-      "https://media.discordapp.net/attachments/1118253729544667177/1118253730001866772/Screenshot_20210919-192715-249.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1047968774353080420/IMG_9504.png?width=497&height=555",
-      "https://media.discordapp.net/attachments/1111824247518670940/1111824248160387112/Trickburn.png?width=648&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161349758770757784/trickstache.png?ex=6537fa3f&is=6525853f&hm=102c47e8f34b7efaaa72436f&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1165790149678989342/Screenshot_20231021_121655_PvZ_Heroes2.jpg?ex=654821af&is=6535acaf&hm=adb92e74fa1b9cb202e51762&=&width=577&height=580",
-      "https://media.discordapp.net/attachments/1000479455753551934/1126246757924356136/IMG_6342.png",
-      //valksterstache
-      "https://media.discordapp.net/attachments/1044626284346605588/1240853484853788733/vss.webp?ex=6648125c&is=6646c0dc&hm=0a6a0554e16c85f3a62404cad408ab83558ea5ab0547435e30077204e717df31&=&format=webp",
-      //Young Egg Martin
-      "https://media.discordapp.net/attachments/1030888661581041775/1234996829473607772/Screenshot_20240103-051014-025.png?ex=663ff2ed&is=663ea16d&hm=209e2895c13d5bb3397e27a6e82af3eabff55977498ab98350b5ae48523843d7&=&format=webp&quality=lossless&width=553&height=570",
-      "https://media.discordapp.net/attachments/1159338425372123176/1160636375394168915/Screenshot_20231008-105257.png?ex=653561db&is=6522ecdb&hm=cee671c5ca6f16c6c9e5323f&=&width=600&height=621",
+      `${result[0].barrelster}`,
+      `${result[0].binatychickening}`,
+      `${result[0].bonusducks}`,
+      `${result[0].congabait}`,
+      `${result[0].hibird}`,
+      `${result[0].otkneturon}`,
+      `${result[0].packagester}`,
+      `${result[0].pbfeast}`,
+      `${result[0].professorpackage}`,
+      `${result[0].pureburn}`,
+      `${result[0].teleburn}`,
+      `${result[0].throwster}`,
+      `${result[0].trickburn}`,
+      `${result[0].trickstache}`,
+      `${result[0].uno}`,
+      `${result[0].valkster}`,
+      `${result[0].valksterstache}`,
+      `${result[0].youngeggmartin}`,
       //PB WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061847096946335896/IMG_0707.jpg?width=539&height=587",
       "https://media.discordapp.net/attachments/1044626284346605588/1061847097172824114/IMG_0706.jpg?width=540&height=586",
@@ -535,27 +552,23 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061847498718716004/21d9e7b300b9d9c6c2e42466bc7e48fc992dda61e9da1c914e300794db467552.png?width=555&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061847499133964288/a10373a91cc6218cf61804b23696decd5641d79d7b03a7d0ba58d89256052134.jpg",
       "https://media.discordapp.net/attachments/1044626284346605588/1061847499314303047/IMG_9379.png?width=557&height=587",
-
       //RB TBOT DB
-      //Bolt Bolt
-      "https://media.discordapp.net/attachments/1044626284346605588/1160933596777947136/IMG_5209.jpg?ex=653676aa&is=652401aa&hm=df9ac1a0e78f9e67c34db094&=&width=534&height=580",
-      //Boss
-      "https://media.discordapp.net/attachments/1088919723196035112/1236689658146983998/image.png?ex=663f83ff&is=663e327f&hm=da5c342a5d5f59c4adff283fd6a103fb1236ea3f318d2a90d02bcdb10bc2b7ab&=&format=webp&quality=lossless&width=613&height=570",
-      //Brickster
-      "https://media.discordapp.net/attachments/1044626284346605588/1109897867193229332/IMG_2669.png?width=556&height=604",
-      //Bustbolt
-      "https://media.discordapp.net/attachments/1044626284346605588/1229096070584340593/bustbolt.png?ex=662e6fea&is=661bfaea&hm=8fc1c174a9bc9b2bc571a1020138fec8d430edf1c37ec18655de5af9da12acd3&=&format=webp&quality=lossless&width=613&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160983306712662048/IMG_5223.png?ex=6536a4f6&is=65242ff6&hm=2be881667509e2b5999f6535&=&width=633&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1119829935767433276/Screenshot_20230616_230920_PvZ_Heroes.jpg?width=580&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160996133972222052/IMG_5227.png?ex=6536b0e8&is=65243be8&hm=94ee4c38bdb87695aa7fb027&=&width=631&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160998232353161276/IMG_5228.png?ex=6536b2dc&is=65243ddc&hm=0c6edd8101ad4d007e3bc563&=&width=634&height=580",
-      "https://cdn.discordapp.com/attachments/923709467751772210/1103924545674563594/FullSizeRender_2.jpg",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169723476559540294/Pharaohster.jpeg?ex=655670e1&is=6543fbe1&hm=b788a27ed8157ba8237dc53f&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161277781762637934/pogerazzi.png?ex=6537b736&is=65254236&hm=f0650b18ff98f46c362671a3&=&width=619&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1045190221584662528/IMG_9378.png?width=545&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161326161503211610/IMG_5235.png?ex=6537e445&is=65256f45&hm=c7e0b8b6a9ca4821d8531351&=&width=615&height=580",
-      "https://media.discordapp.net/attachments/1064566497944539156/1124805680872816710/Screenshot_20230701_145505.jpg?width=614&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169724408311595119/trickbolt.jpeg?ex=655671bf&is=6543fcbf&hm=de55e01823a275e28e0576c4&=",
+      `${result[0].aggroscience}`,
+      `${result[0].boltbolt}`,
+      `${result[0].boss}`,
+      `${result[0].brickster}`,
+      `${result[0].bustbolt}`,
+      `${result[0].igmablobchum}`,
+      `${result[0].josebolt}`,
+      `${result[0].kingleap}`,
+      `${result[0].l00p}`,
+      `${result[0].marxbolt}`,
+      `${result[0].mimescibolt}`,
+      `${result[0].pharaohster}`,
+      `${result[0].poggerrazzi}`,
+      `${result[0].sunbandits}`,
+      `${result[0].trickblob}`,
+      `${result[0].trickbolt}`,
       //RB WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061846680930111488/IMG_0731.jpg?width=545&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846681139822694/IMG_0730.jpg?width=525&height=587",
@@ -568,20 +581,20 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061846726333448304/IMG_0721.jpg?width=552&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846726534770739/IMG_0720.jpg?width=516&height=586",
       //SM TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1160937711943823510/IMG_5210.png?ex=65367a7f&is=6524057f&hm=5e781b0c2b451ead3c280cd2&=&width=540&height=580",
-      "https://media.discordapp.net/attachments/940369914957549578/1064704022671536128/Screenshot_2023-01-17-08-25-44-697_com.ea.gp.pvzheroes-edit.jpg?width=600&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169725614211743855/cruisertempo.png?ex=655672de&is=6543fdde&hm=ed71a12f45dc0f99fb009902&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1086236360941256754/IMG_20230315_000115.jpg?width=613&height=625",
-      "https://media.discordapp.net/attachments/1076677104734843001/1127754320377557032/IMG_5084.png?width=648&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169726881327759431/horts.png?ex=6556740c&is=6543ff0c&hm=4f0ea41c2ba9dfa83132624d&=",
-      "https://media.discordapp.net/attachments/1190055418962128956/1190055419398332506/Screenshot_2023-12-28_at_2.09.59_PM.png?ex=65a0687a&is=658df37a&hm=57a6cbb27f21d79915737560&=&format=webp&quality=lossless&width=575&height=614",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169726446621687919/kingtempo.png?ex=655673a5&is=6543fea5&hm=a2d0a002a5b365e121613935&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1044626375706939472/IMG_9328.png?width=558&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1044626375413350482/IMG_9329.png?width=554&height=604",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161342133236682842/oobltgargs.png?ex=6537f325&is=65257e25&hm=754559314967f2bd746e99c2&=&width=596&height=621",
-      "https://media.discordapp.net/attachments/1118010737068093492/1118010737516892160/IMG_7468.png?width=670&height=625",
-      "https://media.discordapp.net/attachments/1044626284346605588/1169727973335773315/tricksmash.jpg?ex=65567511&is=65440011&hm=74589adea560c3a6a2039448&=",
-      "https://media.discordapp.net/attachments/1044626284346605588/1138465856410632292/IMG_4025.png?width=539&height=621",
+      `${result[0].agentm}`,
+      `${result[0].bobertsmash}`,
+      `${result[0].cruisertempo}`,
+      `${result[0].fiora}`,
+      `${result[0].homophobia}`,
+      `${result[0].horts}`,
+      `${result[0].kingtempo}`,
+      `${result[0].mop}`,
+      `${result[0].mopgargs}`,
+      `${result[0].ooboltgargs}`,
+      `${result[0].pablosyeezys}`,
+      `${result[0].pepegasmash}`,
+      `${result[0].tricksmash}`,
+      `${result[0].whalepharaoh}`,
       //SM WEB DB
       "https://media.discordapp.net/attachments/1044626284346605588/1061846214292820019/IMG_0766.jpg?width=530&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846214506713148/IMG_0765.jpg?width=533&height=587",
@@ -595,18 +608,19 @@ module.exports = {
       "https://media.discordapp.net/attachments/1044626284346605588/1061846384598319154/IMG_0754.jpg?width=540&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846384917106698/IMG_0753.jpg?width=576&height=587",
       //ZM TBOT DB
-      "https://media.discordapp.net/attachments/1044626284346605588/1064547529565409360/68750B58-2D53-4AEE-B3C8-5CD53F048B5A.jpg?width=571&height=625",
-      "https://media.discordapp.net/attachments/1064566497944539156/1152558236050927726/Screenshot_20230916_133138_PvZ_Heroes.jpg?width=654&height=621",
-      "https://media.discordapp.net/attachments/1045888517110251590/1093586714041262180/Screenshot_20230406_193941.jpg?width=609&height=604",
-      "https://media.discordapp.net/attachments/1058720036547743744/1112961974251311115/Screenshot_20230530-143132.png?width=549&height=603",
-      "https://media.discordapp.net/attachments/1044626284346605588/1183515299660714054/image.jpg?ex=65889d84&is=65762884&hm=efd4c80ef18d11083dab98a0&=&format=webp&width=594&height=570",
-      "https://media.discordapp.net/attachments/1044626284346605588/1121579961862586489/IMG_3112.png?width=641&height=625",
-      "https://cdn.discordapp.com/attachments/1044626284346605588/1128366314583502898/12d59563ef613aa43192c9d8f319a9dae4d9e87d14d6defaf2690d231bdee2ea.png",
-      "https://media.discordapp.net/attachments/1044626284346605588/1160990031096315985/IMG_5226.png?ex=6536ab39&is=65243639&hm=cfdf8ea7ce8b98ace3a29d8f&=&width=634&height=580",
-      "https://media.discordapp.net/attachments/1158579183996387381/1158594455696314469/Screenshot_20231002_204011.jpg?ex=651e222b&is=651cd0ab&hm=b010e029dd04aa768bce0fe5&=&width=523&height=580",
-      "https://media.discordapp.net/attachments/1044626284346605588/1161351362324484228/trickmech.png?ex=6537fbbd&is=652586bd&hm=659ea09581f9e6716ff7e7c3&=",
+      `${result[0].berserkmech}`,
+      `${result[0].bettrickmech}`,
+      `${result[0].binaryflagwar}`,
+      `${result[0].dozzamech}`,
+      `${result[0].feastmech}`,
+      `${result[0].frymech}`,
+      `${result[0].gargburn}`,
+      `${result[0].kendycrush}`,
+      `${result[0].pyromania}`,
+      `${result[0].shockwave}`,
+      `${result[0].trickmech}`,
+      `${result[0].zmoss}`,
       //ZM WEB DB
-
       "https://media.discordapp.net/attachments/1044626284346605588/1061846058872885329/IMG_0783.jpg?width=548&height=587",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846059099369502/IMG_0782.jpg?width=536&height=586",
       "https://media.discordapp.net/attachments/1044626284346605588/1061846059317461133/IMG_0781.jpg?width=563&height=587",
